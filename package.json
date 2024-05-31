@@ -1,0 +1,22 @@
+{
+  "name": "siptatif-backend",
+  "version": "1.0.0",
+  "description": "REST API SIPTATIF",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx tsc -w",
+    "dev": "npx nodemon",
+    "build": "tsc"
+  },
+  "author": "Muh. Zaki Erbai Syas",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "nodemon": "^3.1.2"
+  }
+}
