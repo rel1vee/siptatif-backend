@@ -10,7 +10,7 @@ export const createTAValidation = (payload: TAType) => {
     kategori: Joi.string().required(),
     pembimbing_1: Joi.string().required(),
     pembimbing_2: Joi.string().allow("", null),
-    file: Joi.array().items(Joi.binary()).required(),
+    file: Joi.array().items(Joi.binary()).optional().allow(null),
   });
 
   return schema.validate(payload);
