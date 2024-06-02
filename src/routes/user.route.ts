@@ -15,5 +15,5 @@ UserRouter.get("/user", requireAdmin, getUser);
 UserRouter.post("/register", registerUser);
 UserRouter.post("/login", createSession);
 UserRouter.post("/refresh", refreshSession);
-UserRouter.post("/user/:email", requireAdmin, updateUser);
-UserRouter.post("/user/:email", requireAdmin, deleteUser);
+UserRouter.put("/user/:email", requireAdmin, updateUser);
+UserRouter.delete("/user/:email", requireAdmin, deleteUser);
