@@ -1,18 +1,21 @@
+import { logger } from "../utils/logger";
 import { Request, Response } from "express";
+import { signJWT, verifyJWT } from "../utils/jwt";
 import {
   createUserValidation,
   createSessionValidation,
   refreshSessionValidation,
+  updateUserValidation,
 } from "../validations/user.validation";
-import { logger } from "../utils/logger";
 import { checkPassword, hashing } from "../utils/hashing";
 import {
   createUser,
+  deleteUserByEmail,
   findUserByEmail,
   getUserByEmail,
   getUserFromDB,
+  updateUserByEmail,
 } from "../services/user.service";
-import { signJWT, verifyJWT } from "../utils/jwt";
 
 export const getUser = async (req: Request, res: Response) => {
   const {
@@ -146,6 +149,78 @@ export const refreshSession = async (req: Request, res: Response) => {
       status: false,
       statusCode: 422,
       message: error.message,
+    });
+  }
+};
+
+export const updateUser = async (req: Request, res: Response) => {
+  const {
+    params: { email },
+  } = req;
+
+  const { error, value } = updateUserValidation(req.body);
+  if (error) {
+    logger.error("Failed update user", error.details[0].message);
+    return res.status(422).send({
+      status: false,
+      statusCode: 422,
+      message: error.details[0].message,
+    });
+  }
+
+  try {
+    value.password = `${hashing(value.password)}`;
+
+    const result = await updateUserByEmail(email, value);
+    if (result) {
+      logger.info("Success update user");
+      return res.status(200).send({
+        status: true,
+        statusCode: 200,
+        message: "Update user success",
+      });
+    } else {
+      logger.info("Data not found");
+      return res
+        .status(404)
+        .send({ status: false, statusCode: 404, message: "Data not found" });
+    }
+  } catch (error) {
+    logger.error("Failed update user", error);
+    return res.status(422).send({
+      status: false,
+      statusCode: 422,
+      message: error,
+    });
+  }
+};
+
+export const deleteUser = async (req: Request, res: Response) => {
+  const {
+    params: { email },
+  } = req;
+
+  try {
+    const result = await deleteUserByEmail(email);
+    if (result) {
+      logger.info("Success delete user");
+      return res.status(200).send({
+        status: true,
+        statusCode: 200,
+        message: "Delete user success",
+      });
+    } else {
+      logger.info("Data not found");
+      return res
+        .status(404)
+        .send({ status: false, statusCode: 404, message: "Data not found" });
+    }
+  } catch (error) {
+    logger.error("Failed delete user", error);
+    return res.status(422).send({
+      status: false,
+      statusCode: 422,
+      message: error,
     });
   }
 };

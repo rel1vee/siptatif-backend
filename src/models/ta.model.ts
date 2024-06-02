@@ -37,10 +37,7 @@ const TASchema = new mongoose.Schema(
       type: String,
       default: "Diproses",
     },
-    file: {
-      type: String,
-      default: "",
-    },
+    file: [{ type: Buffer }],
     keterangan: {
       type: String,
       default: "",

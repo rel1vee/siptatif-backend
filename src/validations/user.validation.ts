@@ -28,3 +28,12 @@ export const refreshSessionValidation = (payload: UserType) => {
 
   return schema.validate(payload);
 };
+
+export const updateUserValidation = (payload: UserType) => {
+  const schema = Joi.object({
+    nama: Joi.string().allow("", null),
+    password: Joi.string().allow("", null),
+  });
+
+  return schema.validate(payload);
+};

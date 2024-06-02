@@ -1,5 +1,5 @@
-import { logger } from "../utils/logger";
 import { v4 as uuidv4 } from "uuid";
+import { logger } from "../utils/logger";
 import { Request, Response } from "express";
 import {
   getTAFromDB,
@@ -48,6 +48,10 @@ export const createTA = async (req: Request, res: Response) => {
   }
 
   try {
+    const files = req.files as Express.Multer.File[]; // Mendapatkan array of files dari request
+    const fileBuffers = files.map((file) => file.buffer); // Mengubah file menjadi buffer
+    value.file = fileBuffers; // Menambahkan buffer file ke payload
+
     await addTAToDB(value);
     logger.info("Success add new TA");
     return res
