@@ -47,6 +47,11 @@ export const createTA = async (req: Request, res: Response) => {
     });
   }
 
+  // Pengecekan keberadaan file
+  if (!req.files || req.files.length === 0) {
+    return res.status(400).send({ status: false, statusCode: 400, message: 'No files were uploaded' });
+  }
+
   try {
     const files = req.files as Express.Multer.File[]; // Mendapatkan array of files dari request
     const fileBuffers = files.map((file) => file.buffer); // Mengubah file menjadi buffer
