@@ -9,6 +9,6 @@ export default interface TAType {
   penguji_1: String;
   penguji_2: String;
   status: String;
-  file: String;
+  file: Array<Buffer>;
   keterangan: String;
 }
