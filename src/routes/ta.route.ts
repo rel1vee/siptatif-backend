@@ -12,8 +12,8 @@ const upload = multer({ storage: multer.memoryStorage() }); // Menggunakan penyi
 
 export const TARouter: Router = Router();
 
-TARouter.get("/", requireMahasiswa, getTA);
-TARouter.get("/:nim", requireMahasiswa, getTA);
+TARouter.get("/",  getTA);
+TARouter.get("/:nim", getTA);
 TARouter.post("/", upload.array('file'), requireMahasiswa, createTA);
 TARouter.put("/:kode", requireKoordinator, updateTA);
 TARouter.delete("/:kode", requireKoordinator, deleteTA);
