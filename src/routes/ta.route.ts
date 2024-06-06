@@ -14,6 +14,6 @@ export const TARouter: Router = Router();
 
 TARouter.get("/",  getTA);
 TARouter.get("/:nim", getTA);
-TARouter.post("/", upload.array('file'), requireMahasiswa, createTA);
+TARouter.post("/", upload.array('file'), createTA);
 TARouter.put("/:kode", requireKoordinator, updateTA);
 TARouter.delete("/:kode", requireKoordinator, deleteTA);
