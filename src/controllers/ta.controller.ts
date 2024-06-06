@@ -55,9 +55,14 @@ export const createTA = async (req: Request, res: Response) => {
   try {
     const files = req.files as Express.Multer.File[]; // Mendapatkan array of files dari request
     const fileBuffers = files.map((file) => file.buffer); // Mengubah file menjadi buffer
+    // Log the file buffers for debugging
+    console.log('File buffers:', fileBuffers);
+
     value.file = fileBuffers; // Menambahkan buffer file ke payload
 
-    await addTAToDB(value);
+    const result = await addTAToDB(value);
+    console.log('Result from addTAToDB:', result); // Log the result for debugging
+
     logger.info("Success add new TA");
     return res
       .status(201)
