@@ -1,5 +1,5 @@
-import { Request, Response, NextFunction } from "express";
 import { verifyJWT } from "../utils/jwt";
+import { Request, Response, NextFunction } from "express";
 
 const deserializedToken = async (
   req: Request,

@@ -9,7 +9,7 @@ export const createUserValidation = (payload: UserType) => {
     role: Joi.string().allow("", null),
   });
 
-  return schema.validate(payload);
+  return schema.validate(payload);    
 };
 
 export const createSessionValidation = (payload: UserType) => {

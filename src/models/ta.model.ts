@@ -22,8 +22,14 @@ const TASchema = new mongoose.Schema(
       type: String,
     },
     pembimbing_2: {
+      type: String
+    },
+    file: {
+      type: String
+    },
+    status: {
       type: String,
-      default: "",
+      default: "Diproses",
     },
     penguji_1: {
       type: String,
@@ -33,11 +39,6 @@ const TASchema = new mongoose.Schema(
       type: String,
       default: "",
     },
-    status: {
-      type: String,
-      default: "Diproses",
-    },
-    file: [{ type: Buffer }],
     keterangan: {
       type: String,
       default: "",

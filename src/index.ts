@@ -9,11 +9,11 @@ import express, { Application, Request, Response, NextFunction } from "express";
 const app: Application = express();
 const port: Number = 3000;
 
-// parse body request
+// Parse body request
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// cors access handler
+// Cors access handler
 app.use(cors());
 app.use((req: Request, res: Response, next: NextFunction) => {
   res.setHeader("Access-Control-Allow-Origin", "*");

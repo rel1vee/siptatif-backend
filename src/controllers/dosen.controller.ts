@@ -15,7 +15,7 @@ import {
 export const getDosen = async (req: Request, res: Response) => {
   const {
     params: { nip },
-  } = req;
+  } = req; 
 
   if (nip) {
     const dosen = await getDosenByNIP(nip);
