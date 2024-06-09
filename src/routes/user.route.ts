@@ -12,6 +12,7 @@ import { requireAdmin } from "../middleware/auth";
 export const UserRouter: Router = Router();
 
 UserRouter.get("/user", getUser);
+UserRouter.get("/user/:email", getUser);
 UserRouter.post("/register", registerUser);
 UserRouter.post("/login", createSession);
 UserRouter.post("/refresh", refreshSession);
