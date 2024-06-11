@@ -1,7 +1,7 @@
-import { Application, Router } from "express";
-import { DosenRouter } from "./dosen.route";
-import { UserRouter } from "./user.route";
 import { TARouter } from "./ta.route";
+import { UserRouter } from "./user.route";
+import { DosenRouter } from "./dosen.route";
+import { Application, Router } from "express";
 
 const _routes: Array<[string, Router]> = [
   ["/api/dosen", DosenRouter],

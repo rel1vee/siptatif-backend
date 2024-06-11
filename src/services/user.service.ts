@@ -1,6 +1,6 @@
+import { logger } from "../utils/logger";
 import UserType from "../types/user.type";
 import userModel from "../models/user.model";
-import { logger } from "../utils/logger";
 
 export const getUserFromDB = async () => {
   return await userModel
@@ -28,19 +28,17 @@ export const findUserByEmail = async (email: string) => {
 
 export const updateUserByEmail = async (email: String, payload: UserType) => {
   const result = await userModel.findOneAndUpdate(
-      {
-        email: email,
-      },
-      { $set: payload }
-    )
-    return result
-  };
-  
-  export const deleteUserByEmail = async (email: String) => {
-    const result = await userModel.findOneAndDelete(
-      {
-        email: email,
-      }
-    )
-    return result
-  };
+    {
+      email: email,
+    },
+    { $set: payload }
+  );
+  return result;
+};
+
+export const deleteUserByEmail = async (email: String) => {
+  const result = await userModel.findOneAndDelete({
+    email: email,
+  });
+  return result;
+};

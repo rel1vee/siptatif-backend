@@ -9,7 +9,7 @@ import { requireKoordinator, requireMahasiswa } from "../middleware/auth";
 
 export const TARouter: Router = Router();
 
-TARouter.get("/", requireMahasiswa,  getTA);
+TARouter.get("/", requireMahasiswa, getTA);
 TARouter.get("/:nim", requireMahasiswa, getTA);
 TARouter.post("/", requireMahasiswa, createTA);
 TARouter.put("/:kode", requireKoordinator, updateTA);

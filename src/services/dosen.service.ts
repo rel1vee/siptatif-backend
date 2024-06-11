@@ -1,6 +1,6 @@
 import { logger } from "../utils/logger";
-import dosenModel from "../models/dosen.model";
 import DosenType from "../types/dosen.type";
+import dosenModel from "../models/dosen.model";
 
 export const getDosenFromDB = async () => {
   return await dosenModel
@@ -23,21 +23,18 @@ export const addDosenToDB = async (payload: DosenType) => {
 };
 
 export const updateDosenByNIP = async (nip: String, payload: DosenType) => {
-const result = await dosenModel.findOneAndUpdate(
+  const result = await dosenModel.findOneAndUpdate(
     {
       nip: nip,
     },
     { $set: payload }
-  )
-  return result
+  );
+  return result;
 };
 
 export const deleteDosenByNIP = async (nip: String) => {
-  const result = await dosenModel.findOneAndDelete(
-    {
-      nip: nip,
-    }
-  )
-  return result
+  const result = await dosenModel.findOneAndDelete({
+    nip: nip,
+  });
+  return result;
 };
-

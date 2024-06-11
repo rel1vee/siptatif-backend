@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
-import CONFIG from "../config/environment";
 import { logger } from "./logger";
+import CONFIG from "../config/environment";
 
 mongoose
   .connect(`${CONFIG.db}`)

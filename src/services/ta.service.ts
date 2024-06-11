@@ -1,6 +1,6 @@
+import TAType from "../types/ta.type";
 import { logger } from "../utils/logger";
 import TAModel from "../models/ta.model";
-import TAType from "../types/ta.type";
 
 export const getTAFromDB = async () => {
   return await TAModel.find()

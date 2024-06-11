@@ -22,10 +22,10 @@ const TASchema = new mongoose.Schema(
       type: String,
     },
     pembimbing_2: {
-      type: String
+      type: String,
     },
     file: {
-      type: String
+      type: String,
     },
     status: {
       type: String,

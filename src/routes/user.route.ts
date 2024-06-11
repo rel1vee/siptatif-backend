@@ -5,7 +5,7 @@ import {
   refreshSession,
   getUser,
   updateUser,
-  deleteUser
+  deleteUser,
 } from "../controllers/user.controller";
 import { requireAdmin } from "../middleware/auth";
 
