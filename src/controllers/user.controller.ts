@@ -93,8 +93,8 @@ export const createSession = async (req: Request, res: Response) => {
         message: "invalid email or password",
       });
 
-    const accessToken = signJWT({ ...user }, { expiresIn: "1d" });
-    const refreshToken = signJWT({ ...user }, { expiresIn: "1y" });
+    const accessToken = signJWT({ ...user });
+    const refreshToken = signJWT({ ...user });
 
     return res.status(200).send({
       status: true,
@@ -133,7 +133,7 @@ export const refreshSession = async (req: Request, res: Response) => {
 
     if (!user) return false;
 
-    const accessToken = signJWT({ ...user }, { expiresIn: "1d" });
+    const accessToken = signJWT({ ...user });
 
     return res.status(200).send({
       status: true,
